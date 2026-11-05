@@ -1,0 +1,24 @@
+diff --git a/node_modules/tg-use-local-storage-state/es/src/storage.js b/node_modules/tg-use-local-storage-state/es/src/storage.js
+--- a/node_modules/tg-use-local-storage-state/es/src/storage.js
++++ b/node_modules/tg-use-local-storage-state/es/src/storage.js
+@@ -17,6 +17,10 @@ export default {
+             }
+             else {
+                 const item = localStorage.getItem(key);
++                // nothing stored yet (or an empty value): use the default without a warning
++                if (item === null || item === '') {
++                    return defaultValue;
++                }
+                 if ((options === null || options === void 0 ? void 0 : options.isSimpleString) === true) {
+                     return item;
+                 }
+@@ -27,7 +31,8 @@ export default {
+         }
+         catch (err) {
+             // eslint-disable-next-line no-console
+-            console.warn(`use-local-storage-state - Error getting stored value, using defaultValue instead:`, err, localStorage.getItem(key));
++            // don't read localStorage again here: it may be what threw (e.g. a sandboxed iframe)
++            console.warn(`use-local-storage-state - Error getting stored value for "${key}", using defaultValue instead:`, err);
+             return defaultValue;
+         }
+     },
