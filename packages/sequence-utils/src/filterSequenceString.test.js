@@ -1,4 +1,4 @@
-import filterSequenceString from "./filterSequenceString";
+import filterSequenceString, { filterRnaString } from "./filterSequenceString";
 
 describe("filterSequenceString", () => {
   it("should not filter u's and should convert t's to u's from isOligo=true seqs", () => {
@@ -77,5 +77,26 @@ describe("filterSequenceString", () => {
     );
 
     expect(str).toBe("BXZJUO*bbbxtgalbmfwkqespvicyhrnd");
+  });
+  it("should keep t's in isRna seqs by default", () => {
+    const [str, warnings] = filterSequenceString("aTgtuua", { isRna: true });
+    expect(str).toBe("aTgtuua");
+    expect(warnings).toEqual([]);
+  });
+  it("should convert t's to u's in isRna seqs when convertTToU is passed", () => {
+    const [str, warnings] = filterSequenceString("aTgtuua", {
+      isRna: true,
+      convertTToU: true
+    });
+    expect(str).toBe("aUguuua");
+    expect(warnings[0]).toBe('Replaced "t" with "u" 2 times');
+  });
+  it("should not convert t's to u's for non-RNA seqs even if convertTToU is passed", () => {
+    const [str] = filterSequenceString("atgu", { convertTToU: true });
+    expect(str).toBe("atgu");
+  });
+  it("filterRnaString should still convert t's to u's unless told not to", () => {
+    expect(filterRnaString("atgu")).toBe("augu");
+    expect(filterRnaString("atgu", { convertTToU: false })).toBe("atgu");
   });
 });

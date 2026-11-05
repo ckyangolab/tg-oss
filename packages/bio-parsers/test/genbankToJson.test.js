@@ -899,8 +899,13 @@ ORIGIN
     res.should.be.an("array");
     res[0].success.should.be.true;
     res[0].parsedSequence.features.length.should.equal(1);
-    expect(res[0].parsedSequence.sequence).not.toContain("t");
+    //RNA letters are kept as written by default
+    expect(res[0].parsedSequence.sequence).toContain("t");
     expect(res[0].parsedSequence.sequence).toContain("u");
+    //t's are only converted to u's when explicitly asked for
+    const converted = genbankToJson(string, { convertTToU: true });
+    expect(converted[0].parsedSequence.sequence).not.toContain("t");
+    expect(converted[0].parsedSequence.sequence).toContain("u");
   });
 
   it("will keep U base pairs in Oligo sequences", () => {

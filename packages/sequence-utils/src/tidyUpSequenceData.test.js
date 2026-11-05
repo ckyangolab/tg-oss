@@ -82,13 +82,26 @@ describe("tidyUpSequenceData", () => {
       ]
     });
   });
-  it("isRna should make the t's converted to u's", () => {
+  it("isRna should keep the t's as written by default", () => {
     const res = tidyUpSequenceData({
       sequence: "tgatavagauugagcctttuuu",
       isRna: true
     });
     res.should.containSubset({
-      sequence: "ugauavagauugagccuuuuuu",
+      sequence: "tgatavagauugagcctttuuu",
+      isRna: true
+    });
+  });
+  it("isRna + convertTToU should make the t's converted to u's (keeping case)", () => {
+    const res = tidyUpSequenceData(
+      {
+        sequence: "tgatavagauugagcctttuuuT",
+        isRna: true
+      },
+      { convertTToU: true }
+    );
+    res.should.containSubset({
+      sequence: "ugauavagauugagccuuuuuuU",
       isRna: true
     });
   });

@@ -222,6 +222,7 @@ const options = {
   fileName: "example.gb", //the filename is used if none is found in the genbank
   isProtein: false, //if you know that it is a protein string being parsed you can pass true here
   parseFastaAsCircular: false; //by default fasta files are parsed as linear sequences. You can change this by setting parseFastaAsCircular=true
+  convertTToU: false //by default RNA sequences (e.g. a GenBank record with an mRNA LOCUS type) keep their letters as written; GenBank stores RNA with t's. Set to true to rewrite t's to u's
   //genbankToJson options only
   inclusive1BasedStart: false //by default feature starts are parsed out as 0-based and inclusive
   inclusive1BasedEnd: false //by default feature ends are parsed out as 0-based and inclusive

@@ -23,7 +23,8 @@ export default function tidyUpSequenceData(pSeqData, options = {}) {
     noCdsTranslations,
     convertAnnotationsFromAAIndices,
     getAcceptedInsertChars,
-    topLevelSeqData
+    topLevelSeqData,
+    convertTToU
   } = options;
   let seqData = cloneDeep(pSeqData); //sequence is usually immutable, so we clone it and return it
   const response = {
@@ -52,9 +53,10 @@ export default function tidyUpSequenceData(pSeqData, options = {}) {
       needsBackTranslation = true;
     }
   }
-  if (seqData.isRna) {
-    //flip all t's to u's
-    seqData.sequence = seqData.sequence.replace(/t/gi, "u");
+  if (seqData.isRna && convertTToU) {
+    //only flip t's to u's when explicitly asked to. RNA read from a file
+    //(e.g. a GenBank mRNA record) is written with t's and should be kept as is
+    seqData.sequence = seqData.sequence.replace(/t/g, "u").replace(/T/g, "U");
   }
   if (!doNotRemoveInvalidChars) {
     if (seqData.isProtein) {
@@ -68,7 +70,8 @@ export default function tidyUpSequenceData(pSeqData, options = {}) {
       const [newSeq] = filterSequenceString(seqData.sequence, {
         additionalValidChars,
         ...(topLevelSeqData || seqData),
-        getAcceptedInsertChars
+        getAcceptedInsertChars,
+        convertTToU
       });
       seqData.sequence = newSeq;
     }

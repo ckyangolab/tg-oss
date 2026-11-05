@@ -28,6 +28,7 @@ export default function validateSequence(sequence, options = {}) {
     inclusive1BasedStart,
     inclusive1BasedEnd,
     additionalValidChars,
+    convertTToU,
     allowOverflowAnnotations,
     coerceFeatureTypes
   } = options;
@@ -124,7 +125,9 @@ export default function validateSequence(sequence, options = {}) {
 
     const [validChars, warnings] = filterSequenceString(sequence.sequence, {
       additionalValidChars,
-      ...sequence
+      ...sequence,
+      //RNA keeps its letters as written (GenBank always uses t) unless asked
+      convertTToU
     });
     if (validChars !== sequence.sequence) {
       sequence.sequence = validChars;

@@ -32,7 +32,10 @@ export default function filterSequenceString(
     isProtein,
     isRna,
     isMixedRnaAndDna,
-    getAcceptedInsertChars
+    getAcceptedInsertChars,
+    // RNA letters are kept as written unless the caller explicitly asks for
+    // t/T to be rewritten to u/U (GenBank and most file formats store RNA with t)
+    convertTToU
   } = {},
 ) {
   const sequenceTypeInfo = {
@@ -46,7 +49,8 @@ export default function filterSequenceString(
     isOligo,
     isProtein,
     isRna,
-    isMixedRnaAndDna
+    isMixedRnaAndDna,
+    convertTToU
   });
 
   let sanitizedVal = "";
@@ -122,7 +126,8 @@ export function getReplaceChars({
   isOligo,
   isProtein,
   isRna,
-  isMixedRnaAndDna
+  isMixedRnaAndDna,
+  convertTToU
 } = {}) {
   return isProtein
     ? {}
@@ -130,12 +135,15 @@ export function getReplaceChars({
       isOligo
       ? {}
       : isRna
-        ? { t: "u" }
+        ? convertTToU
+          ? { t: "u" }
+          : {}
         : isMixedRnaAndDna
           ? {}
           : //just plain old dna
             {};
 }
 
+//explicit RNA filter: converts t to u unless convertTToU: false is passed
 export const filterRnaString = (s, o) =>
-  filterSequenceString(s, { ...o, isRna: true })[0];
+  filterSequenceString(s, { convertTToU: true, ...o, isRna: true })[0];
