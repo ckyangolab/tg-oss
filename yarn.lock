@@ -3545,7 +3545,7 @@
   dependencies:
     "@teselagen/range-utils" "file:../../Library/Caches/Yarn/v6/npm-@teselagen-sequence-utils-0.3.42-d2112af0-82ea-496f-bff2-95722f16b0fa-1769622900214/node_modules/@teselagen/range-utils"
     escape-string-regexp "5.0.0"
-    jsondiffpatch "0.7.3"
+    jsondiffpatch "0.7.7"
     lodash-es "^4.18.1"
     shortid "2.2.16"
     string-splice "^1.3.0"
@@ -8488,10 +8488,10 @@ jsonc-parser@3.2.0:
   resolved "https://registry.yarnpkg.com/jsonc-parser/-/jsonc-parser-3.2.0.tgz#31ff3f4c2b9793f89c67212627c51c6394f88e76"
   integrity sha512-gfFQZrcTc8CnKXp6Y4/CBT3fTc0OVuDofpre4aEeEpSBPV5X5v4+Vmx+8snU7RLPrNHPKSgLxGo9YuQzz20o+w==
 
-jsondiffpatch@0.7.3:
-  version "0.7.3"
-  resolved "https://registry.yarnpkg.com/jsondiffpatch/-/jsondiffpatch-0.7.3.tgz#d83360730767c48076fb4a8db89d33d46de0cbe2"
-  integrity sha512-zd4dqFiXSYyant2WgSXAZ9+yYqilNVvragVNkNRn2IFZKgjyULNrKRznqN4Zon0MkLueCg+3QaPVCnDAVP20OQ==
+jsondiffpatch@0.7.7:
+  version "0.7.7"
+  resolved "https://registry.yarnpkg.com/jsondiffpatch/-/jsondiffpatch-0.7.7.tgz#34043b1f0994857cb774d70d8f161351005897f9"
+  integrity sha512-C3375q+xluwQYS6Je613YqXpZhW9uSi2YFRR+8QTJVYhdk0GZiDr7HD9bXNrdV9PJCpmwsCgJM9ZXXESSZPCzA==
   dependencies:
     "@dmsnell/diff-match-patch" "^1.1.0"
 
