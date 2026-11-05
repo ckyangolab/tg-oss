@@ -27,7 +27,7 @@ import {
   invertRange,
   normalizeRange
 } from "@teselagen/range-utils";
-import shortid from "shortid";
+import { nanoid } from "nanoid";
 
 import addMetaToActionCreators from "../redux/utils/addMetaToActionCreators";
 import { actions, editorReducer } from "../redux";
@@ -271,7 +271,7 @@ export const importSequenceFromFile =
       }
 
       if (seqData) {
-        seqData.stateTrackingId = shortid();
+        seqData.stateTrackingId = nanoid();
         updateEditor(
           {
             getState: () => ({ VectorEditor: { [props.editorName]: props } }),

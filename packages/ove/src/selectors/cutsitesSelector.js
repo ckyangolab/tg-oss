@@ -1,4 +1,4 @@
-import shortid from "shortid";
+import { nanoid } from "nanoid";
 import circularSelector from "./circularSelector";
 import sequenceSelector from "./sequenceSelector";
 import restrictionEnzymesSelector from "./restrictionEnzymesSelector";
@@ -63,7 +63,7 @@ function cutsitesSelector(
     const cutsitesForEnzyme = cutsitesByName[enzymeName];
     cutsitesForEnzyme.forEach(function (cutsite) {
       const numberOfCuts = cutsitesByName[enzymeName].length;
-      const uniqueId = shortid();
+      const uniqueId = nanoid();
       cutsite.id = uniqueId;
       cutsite.numberOfCuts = numberOfCuts;
       cutsite.annotationType = "cutsite";
