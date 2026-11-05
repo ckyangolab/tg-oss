@@ -3509,7 +3509,7 @@
     color "3.2.1"
     fast-xml-parser "^4.2.5"
     fflate "^0.8.0"
-    lodash-es "^4.17.21"
+    lodash-es "^4.18.1"
     validate.io-nonnegative-integer-array "^1.0.1"
 
 "@teselagen/file-utils@file:packages/file-utils":
@@ -3517,13 +3517,13 @@
   dependencies:
     buffer "5.7.1"
     jszip "^3.10.1"
-    lodash-es "^4.17.21"
+    lodash-es "^4.18.1"
     papaparse "5.3.2"
 
 "@teselagen/range-utils@file:packages/range-utils":
   version "0.3.20"
   dependencies:
-    lodash-es "^4.17.21"
+    lodash-es "^4.18.1"
 
 "@teselagen/react-list@0.8.18":
   version "0.8.18"
@@ -3546,7 +3546,7 @@
     "@teselagen/range-utils" "file:../../Library/Caches/Yarn/v6/npm-@teselagen-sequence-utils-0.3.42-d2112af0-82ea-496f-bff2-95722f16b0fa-1769622900214/node_modules/@teselagen/range-utils"
     escape-string-regexp "5.0.0"
     jsondiffpatch "0.7.3"
-    lodash-es "^4.17.21"
+    lodash-es "^4.18.1"
     shortid "2.2.16"
     string-splice "^1.3.0"
 
@@ -3572,7 +3572,7 @@
     fuse.js "^6.6.2"
     fuzzysearch "^1.0.3"
     immer "^9.0.15"
-    lodash-es "^4.17.21"
+    lodash-es "^4.18.1"
     math-expression-evaluator "^1.3.7"
     mobx "^6.10.2"
     nanoid "^4.0.0"
@@ -8775,10 +8775,10 @@ locate-path@^6.0.0:
   dependencies:
     p-locate "^5.0.0"
 
-lodash-es@^4.17.15, lodash-es@^4.17.21:
-  version "4.17.21"
-  resolved "https://registry.yarnpkg.com/lodash-es/-/lodash-es-4.17.21.tgz#43e626c46e6591b7750beb2b50117390c609e3ee"
-  integrity sha512-mKnC+QJ9pWVzv+C4/U3rRsHapFfHvQFoFB92e52xeyGMcX6/OlIl78je1u8vePzYZSkkogMPJ2yjxxsb89cxyw==
+lodash-es@^4.17.15, lodash-es@^4.18.1:
+  version "4.18.1"
+  resolved "https://registry.yarnpkg.com/lodash-es/-/lodash-es-4.18.1.tgz#b962eeb80d9d983a900bf342961fb7418ca10b1d"
+  integrity sha512-J8xewKD/Gk22OZbhpOVSwcs60zhd95ESDwezOFuA3/099925PdHJ7OFHNTGtajL3AlZkykD32HykiMo+BIBI8A==
 
 lodash.clonedeepwith@4.5.0:
   version "4.5.0"
@@ -8825,10 +8825,15 @@ lodash.union@^4.6.0:
   resolved "https://registry.yarnpkg.com/lodash.union/-/lodash.union-4.6.0.tgz#48bb5088409f16f1821666641c44dd1aaae3cd88"
   integrity sha512-c4pB2CdGrGdjMKYLA+XiRDO7Y0PRQbm/Gzg8qMj+QH+pFVAoTp5sBpO0odL3FjoPCGjK96p6qsP+yQoiLoOBcw==
 
-lodash@4.17.21, lodash@^4.0.1, lodash@^4.17.14, lodash@^4.17.15, lodash@^4.17.21, lodash@~4.17.15:
-  version "4.17.21"
-  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.21.tgz#679591c564c3bffaae8454cf0b3df370c3d6911c"
-  integrity sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==
+lodash@4.18.1, lodash@^4.0.1, lodash@^4.17.14, lodash@^4.17.15, lodash@^4.17.21:
+  version "4.18.1"
+  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.18.1.tgz#ff2b66c1f6326d59513de2407bf881439812771c"
+  integrity sha512-dMInicTPVE8d1e5otfwmmjlxkZoUpiVLwyeTdUsi/Caj/gfzzblBcCE5sRHV/AsjuCmxWrte2TNGSYuCeCq+0Q==
+
+lodash@~4.17.15:
+  version "4.17.23"
+  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.23.tgz#f113b0378386103be4f6893388c73d0bde7f2c5a"
+  integrity sha512-LgVTMpQtIopCi79SJeDiP0TfWi5CNEc/L/aRdTh3yIvmZXTnheWpKjSZhnvMl8iXbC1tFg9gdHHDMLoV7CnG+w==
 
 log-symbols@^4.0.0:
   version "4.1.0"

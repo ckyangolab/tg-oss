@@ -4,6 +4,6 @@
   "type": "module",
   "repository": "https://github.com/TeselaGen/tg-oss",
   "dependencies": {
-    "lodash-es": "^4.17.21"
+    "lodash-es": "^4.18.1"
   }
 }

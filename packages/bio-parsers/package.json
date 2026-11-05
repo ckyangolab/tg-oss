@@ -9,7 +9,7 @@
     "color": "3.2.1",
     "fast-xml-parser": "^4.2.5",
     "fflate": "^0.8.0",
-    "lodash-es": "^4.17.21",
+    "lodash-es": "^4.18.1",
     "validate.io-nonnegative-integer-array": "^1.0.1",
     "@teselagen/sequence-utils": "file:../sequence-utils",
     "@teselagen/range-utils": "file:../range-utils"
