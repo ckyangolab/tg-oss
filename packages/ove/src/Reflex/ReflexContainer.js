@@ -66,6 +66,8 @@ class ReflexContainer extends React.Component {
     this.events.on("splitter.resize", this.onSplitterResize);
 
     this.events.on("element.size", this.onElementSize);
+
+    this.observeContainerSize();
   }
 
   /////////////////////////////////////////////////////////
@@ -74,6 +76,45 @@ class ReflexContainer extends React.Component {
   /////////////////////////////////////////////////////////
   componentWillUnmount() {
     this.events.off();
+    if (this.resizeObserver) {
+      this.resizeObserver.disconnect();
+      this.resizeObserver = null;
+    }
+  }
+
+  /////////////////////////////////////////////////////////
+  // If the container had no size when the flex data was
+  // computed (e.g. it was mounted while hidden or while
+  // its parent was still being laid out), every element
+  // got flex 0 and would never recover. Watch the
+  // container and recompute once it gets a real size.
+  //
+  /////////////////////////////////////////////////////////
+  observeContainerSize() {
+    if (typeof ResizeObserver === "undefined") return;
+    const domElement = ReactDOM.findDOMNode(this);
+    if (!domElement) return;
+    this.resizeObserver = new ResizeObserver(() => {
+      this.onContainerResize();
+    });
+    this.resizeObserver.observe(domElement);
+  }
+
+  onContainerResize() {
+    if (!this.flexComputedWithoutSize) return;
+    if (!this.getContainerSize()) return;
+    const flexData = this.computeFlexData();
+    this.setPartialState({
+      flexData
+    });
+  }
+
+  getContainerSize() {
+    const domElement = ReactDOM.findDOMNode(this);
+    if (!domElement) return 0;
+    return this.props.orientation === "horizontal"
+      ? domElement.offsetHeight
+      : domElement.offsetWidth;
   }
 
   /////////////////////////////////////////////////////////
@@ -633,6 +674,9 @@ class ReflexContainer extends React.Component {
   /////////////////////////////////////////////////////////
   computeFlexData(children = this.getValidChildren()) {
     const pixelFlex = this.computePixelFlex();
+
+    //remember if we had to compute without a size so we can redo it later
+    this.flexComputedWithoutSize = pixelFlex === 0;
 
     const computeFreeFlex = flexData => {
       return flexData.reduce((sum, entry) => {
